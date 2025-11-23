@@ -8,7 +8,8 @@ read_ejson <- function(path) {
 
   # If GeoJSON-like structure:
   if (!is.null(raw$type) && raw$type %in% c("FeatureCollection", "Feature")) {
-    return(sf::st_read(path, quiet = TRUE))
+    raw <- sf::st_read(path, quiet = TRUE) |>
+      sf::st_shift_longitude()
   }
 
   # Otherwise return raw list for custom parsing
