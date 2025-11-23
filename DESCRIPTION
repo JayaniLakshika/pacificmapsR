@@ -1,11 +1,15 @@
 Package: pacificmapsR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Mapping Pacific country spatial data
+Version: 0.0.1
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    c(person("Mark", "Padgham", , "mark.padgham@email.com", role = c("aut")),
+    person("Elle", "Saber", , "Elle.Saber@anu.edu.au", role = c("aut")),
+    person("Anna", "Rafferty", , "Anna.Rafferty@asbestossafety.gov.au", role = c("aut")),
+    person("Jayani P.", "Gamage", , "jayanilakshika76@gmail.com", role = c("aut", "cre")))
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
+URL: https://github.com/JayaniLakshika/pacificmapsR
+BugReports: https://github.com/JayaniLakshika/pacificmapsR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
