@@ -9,7 +9,8 @@ read_ejson <- function(path) {
   # If GeoJSON-like structure:
   if (!is.null(raw$type) && raw$type %in% c("FeatureCollection", "Feature")) {
     raw <- sf::st_read(path, quiet = TRUE) |>
-      sf::st_shift_longitude()
+      sf::st_shift_longitude() |> ## To shift objects on the oneside of the dateline
+      sf::st_transform("EPSG:3994") ## Changes the coordinate reference system which solves the axis label problem
   }
 
   # Otherwise return raw list for custom parsing
