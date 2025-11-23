@@ -20,23 +20,50 @@ pak::pak("JayaniLakshika/pacificmapsR")
 
 ``` r
 library(pacificmapsR)
+library(patchwork)
 ```
 
 - To shift objects on the oneside of the dateline
 
 ``` r
-dd <- read_ejson(here::here("data/2010_PHC_Kiribati_EnumArea_3832.geojson"))
-plot_ejson_map(dd)
+## Problem
+dd_old <- sf::st_read(here::here("data/2010_PHC_Kiribati_EnumArea_3832.geojson"), quiet = TRUE)
+plot_pr1 <- plot_ejson_map(dd_old) 
 ```
 
-![](reference/figures/README-unnamed-chunk-3-1.png)
+``` r
+## Fixed
+dd <- read_ejson(here::here("data/2010_PHC_Kiribati_EnumArea_3832.geojson"))
+plot_sol1 <- plot_ejson_map(dd)
+```
+
+``` r
+plot_pr1 + plot_sol1 +
+  plot_layout(nrow = 2)
+```
+
+![](reference/figures/README-unnamed-chunk-5-1.png)
 
 - Changes the coordinate reference system which solves the axis label
   problem
 
 ``` r
-dd <- read_ejson(here::here("data/2007_PHC_Fiji_EnumArea_32760.geojson"))
-plot_ejson_map(dd)
+## Problem
+dd_old <- sf::st_read(here::here("data/2007_PHC_Fiji_EnumArea_32760.geojson"), quiet = TRUE) |>
+      sf::st_shift_longitude() ## To shift objects on the oneside of the dateline
+  
+plot_pr2 <- plot_ejson_map(dd_old) 
 ```
 
-![](reference/figures/README-unnamed-chunk-4-1.png)
+``` r
+## Fixed
+dd <- read_ejson(here::here("data/2007_PHC_Fiji_EnumArea_32760.geojson"))
+plot_sol2 <- plot_ejson_map(dd)
+```
+
+``` r
+plot_pr2 + plot_sol2 +
+  plot_layout(ncol = 2)
+```
+
+![](reference/figures/README-unnamed-chunk-8-1.png)

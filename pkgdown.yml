@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   Introduction: Introduction.html
-last_built: 2025-11-23T04:18Z
+last_built: 2025-11-23T04:27Z
 urls:
   reference: https://jayanilakshika.github.io/pacificmapsR/reference
   article: https://jayanilakshika.github.io/pacificmapsR/articles

@@ -69,21 +69,40 @@
 <h2 id="issues-mainly-we-addressed">Issues mainly we addressed<a class="anchor" aria-label="anchor" href="#issues-mainly-we-addressed"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JayaniLakshika/pacificmapsR" class="external-link">pacificmapsR</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JayaniLakshika/pacificmapsR" class="external-link">pacificmapsR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>To shift objects on the oneside of the dateline</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_ejson.html">read_ejson</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data/2010_PHC_Kiribati_EnumArea_3832.geojson"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/plot_ejson_map.html">plot_ejson_map</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
+<code class="sourceCode R"><span><span class="co">## Problem</span></span>
+<span><span class="va">dd_old</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data/2010_PHC_Kiribati_EnumArea_3832.geojson"</span><span class="op">)</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">plot_pr1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plot_ejson_map.html">plot_ejson_map</a></span><span class="op">(</span><span class="va">dd_old</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Fixed</span></span>
+<span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_ejson.html">read_ejson</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data/2010_PHC_Kiribati_EnumArea_3832.geojson"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">plot_sol1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plot_ejson_map.html">plot_ejson_map</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_pr1</span> <span class="op">+</span> <span class="va">plot_sol1</span> <span class="op">+</span></span>
+<span>  <span class="fu">plot_layout</span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 <ul>
 <li>Changes the coordinate reference system which solves the axis label problem</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_ejson.html">read_ejson</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data/2007_PHC_Fiji_EnumArea_32760.geojson"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/plot_ejson_map.html">plot_ejson_map</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Problem</span></span>
+<span><span class="va">dd_old</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data/2007_PHC_Fiji_EnumArea_32760.geojson"</span><span class="op">)</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_shift_longitude.html" class="external-link">st_shift_longitude</a></span><span class="op">(</span><span class="op">)</span> <span class="co">## To shift objects on the oneside of the dateline</span></span>
+<span>  </span>
+<span><span class="va">plot_pr2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plot_ejson_map.html">plot_ejson_map</a></span><span class="op">(</span><span class="va">dd_old</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Fixed</span></span>
+<span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_ejson.html">read_ejson</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data/2007_PHC_Fiji_EnumArea_32760.geojson"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">plot_sol2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plot_ejson_map.html">plot_ejson_map</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_pr2</span> <span class="op">+</span> <span class="va">plot_sol2</span> <span class="op">+</span></span>
+<span>  <span class="fu">plot_layout</span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
