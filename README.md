@@ -35,13 +35,15 @@ library(patchwork)
 ``` r
 ## Problem
 dd_old <- sf::st_read(here::here("data/2010_PHC_Kiribati_EnumArea_3832.geojson"), quiet = TRUE)
-plot_pr1 <- plot_ejson_map(dd_old) 
+plot_pr1 <- plot_ejson_map(dd_old) +
+  ggplot2::ggtitle("Issue")
 ```
 
 ``` r
 ## Fixed
 dd <- read_ejson(here::here("data/2010_PHC_Kiribati_EnumArea_3832.geojson"))
-plot_sol1 <- plot_ejson_map(dd)
+plot_sol1 <- plot_ejson_map(dd) +
+  ggplot2::ggtitle("Solution")
 ```
 
 ``` r
@@ -59,13 +61,15 @@ plot_pr1 + plot_sol1 +
 dd_old <- sf::st_read(here::here("data/2007_PHC_Fiji_EnumArea_32760.geojson"), quiet = TRUE) |>
       sf::st_shift_longitude() ## To shift objects on the oneside of the dateline
   
-plot_pr2 <- plot_ejson_map(dd_old) 
+plot_pr2 <- plot_ejson_map(dd_old) +
+  ggplot2::ggtitle("Issue")  
 ```
 
 ``` r
 ## Fixed
 dd <- read_ejson(here::here("data/2007_PHC_Fiji_EnumArea_32760.geojson"))
-plot_sol2 <- plot_ejson_map(dd)
+plot_sol2 <- plot_ejson_map(dd) +
+  ggplot2::ggtitle("Solution")
 ```
 
 ``` r
