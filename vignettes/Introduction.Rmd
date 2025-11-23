@@ -1,0 +1,29 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pacificmapsR)
+```
+
+```{r}
+dd <- read_ejson(here::here("data/2010_PHC_Kiribati_EnumArea_3832.geojson"))
+```
+
+```{r}
+ggplot2::ggplot(dd) +
+  ggplot2::geom_sf(fill = "lightblue", color = "black") +
+  ggplot2::theme_minimal()
+```
