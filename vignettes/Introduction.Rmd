@@ -27,3 +27,15 @@ ggplot2::ggplot(dd) +
   ggplot2::geom_sf(fill = "lightblue", color = "black") +
   ggplot2::theme_minimal()
 ```
+
+```{r}
+dd <- read_ejson(here::here("data/2007_PHC_Fiji_EnumArea_32760.geojson"))
+```
+
+```{r}
+ggplot2::ggplot(dd) +
+  ggplot2::geom_sf(fill = "lightblue", color = "black") +
+  ggplot2::theme_minimal()
+```
+
+
